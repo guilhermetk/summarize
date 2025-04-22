@@ -64,7 +64,7 @@ func executePost(s string) string {
 			{
 				"parts": []map[string]string{
 					{
-						"text": "Your job is to summarize any given test, mantaining the meaning of the original one but trying to keep the response as short as possible. Here is the text you should work on: " + s,
+						"text": "Your job is to summarize any given test, mantaining the meaning of the original one but trying to keep the response as short as possible. The response must be in the same language as the original text. Here is the text you should work on: " + s,
 					},
 				},
 			},
