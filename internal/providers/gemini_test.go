@@ -1,20 +1,16 @@
 package providers
 
 import (
-	"log"
 	"os"
 	"testing"
 
-	"github.com/joho/godotenv"
+	"github.com/guilhermetk/summarize/internal/config"
+
 	"github.com/stretchr/testify/assert"
 )
 
 func TestGeminiProvider_Summarize(t *testing.T) {
-	err := godotenv.Load("../../.env")
-
-	if err != nil {
-		log.Fatal("could not load .env file")
-	}
+	config.LoadEnv()
 
 	if os.Getenv("GOOGLE_GEMINI_KEY") == "" {
 		t.Skip("Skipping test: GOOGLE_GEMINI_KEY not set")
