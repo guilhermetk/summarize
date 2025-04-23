@@ -13,6 +13,11 @@ type SummarizeHandler struct {
 
 func (p *SummarizeHandler) HandleGetSummarize(c echo.Context) error {
 	text := c.QueryParams().Get("text")
+
+	if len(text) == 0 {
+		return c.String(http.StatusOK, "")
+	}
+
 	summarized := p.Provider.Summarize(text)
 	return c.String(http.StatusOK, summarized)
 }

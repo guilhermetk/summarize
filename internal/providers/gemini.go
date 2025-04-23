@@ -48,6 +48,10 @@ type GeminiProvider struct {
 }
 
 func (p *GeminiProvider) Summarize(s string) string {
+	if len(s) == 0 {
+		return ""
+	}
+
 	return executePost(s)
 }
 
