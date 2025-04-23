@@ -8,12 +8,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// LoadEnv attempts to load environment variables from .env file if it exists,
-// but doesn't fail if the file is not found. This makes it work both in
-// development (where .env exists) and in CI/CD (where env vars are set directly).
 func LoadEnv() {
-	// Try to find the .env file by walking up the directory tree
-	// This helps when running tests from different directories
+
 	envPath := findEnvFile()
 	if envPath == "" {
 		log.Println("No .env file found, using environment variables")
@@ -26,7 +22,6 @@ func LoadEnv() {
 	}
 }
 
-// findEnvFile walks up the directory tree looking for a .env file
 func findEnvFile() string {
 	dir, err := os.Getwd()
 	if err != nil {
@@ -41,7 +36,6 @@ func findEnvFile() string {
 
 		parent := filepath.Dir(dir)
 		if parent == dir {
-			// We've reached the root directory
 			break
 		}
 		dir = parent

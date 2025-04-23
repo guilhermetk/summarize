@@ -2,22 +2,17 @@ package main
 
 import (
 	"errors"
-	"log"
 	"log/slog"
 	"net/http"
 
+	"github.com/guilhermetk/summarize/internal/config"
 	"github.com/guilhermetk/summarize/internal/routes"
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
-	err := godotenv.Load()
-
-	if err != nil {
-		log.Fatal("could not load .env file")
-	}
+	config.LoadEnv()
 
 	s := echo.New()
 	s.Use(middleware.Logger())
